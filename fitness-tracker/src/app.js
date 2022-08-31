@@ -3,6 +3,7 @@ import { Link, Routes, Route } from "react-router-dom";
 
 //import components
 import {
+    Navbar,
     Home
 } from "./components"
 
@@ -12,23 +13,24 @@ const App = () => {
     //return routes in here
     return (
         <div>
+            <Navbar />
             {/* Navbar Below */}
-            <div className = "navbar">
+            {/* <div className="navbar">
                 <h1>Fitness Tracker</h1>
                 <nav>
                     <ul>
                         <li>
                             <Link to="/">Home</Link>
-                         </li>
+                        </li>
                         <li>
                             <Link to="/routines">Routines</Link>
-                         </li>
-                         <li>
+                        </li>
+                        <li>
                             <Link to="/activities">Activities</Link>
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </div> */}
 
             {/* Routes Below */}
             <Routes>
@@ -41,7 +43,6 @@ const App = () => {
            
         </div>
     );
-
-}
+};
 
 export default App;

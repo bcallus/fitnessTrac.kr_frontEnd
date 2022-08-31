@@ -5,7 +5,7 @@ const Home = () => {
         <div>
             Home Page Test
         </div>
-    )
-}
+    );
+};
 
 export default Home;
