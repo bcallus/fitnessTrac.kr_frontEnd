@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar ul  {
+    display: flex;
+    list-style-type: none;
+    gap: 1rem;
+}

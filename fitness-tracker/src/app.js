@@ -1,10 +1,10 @@
 import React from "react"; //import useState or useEffect hooks (whatever is needed)
-// import { Routes, Route } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 
 //import components
 import {
-  Navbar
-} from "./components";
+    Home
+} from "./components"
 
 const App = () => {
     //possibly set state here top level
@@ -12,9 +12,33 @@ const App = () => {
     //return routes in here
     return (
         <div>
-            <Navbar />
+            {/* Navbar Below */}
+            <div className = "navbar">
+                <h1>Fitness Tracker</h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                         </li>
+                        <li>
+                            <Link to="/routines">Routines</Link>
+                         </li>
+                         <li>
+                            <Link to="/activities">Activities</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
 
-            <p>Somethingggggggg</p>
+            {/* Routes Below */}
+            <Routes>
+
+                <Route exact path="/" element={<Home />}></Route>
+                <Route></Route>
+                <Route></Route>
+
+            </Routes>
+           
         </div>
     );
 
