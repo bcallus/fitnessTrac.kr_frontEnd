@@ -1,4 +1,4 @@
-import React from "react"; //import useState or useEffect hooks (whatever is needed)
+import React, { useState } from "react"; //import useEffect hooks (whatever is needed)
 import { Routes, Route } from "react-router-dom";
 
 //import components
@@ -13,6 +13,10 @@ import {
 
 const App = () => {
     //possibly set state here top level
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [token, setToken] = useState();
 
     //return routes in here
     return (
@@ -26,7 +30,21 @@ const App = () => {
                 <Route path="/routines" element={<Routines />}></Route>
                 <Route path="/myroutines" element={<MyRoutines />}></Route>
                 <Route path="/activities" element={<Activities />}></Route>
-                <Route path="/login" element={<LogIn />}></Route>
+
+                <Route
+                    path="/login"
+                    element={
+                        <LogIn 
+                        username={username}
+                        setUsername={setUsername}
+                        password={password}
+                        setPassword={setPassword}
+                        setToken={setToken}
+                        isLoggedin={isLoggedIn}
+                        setIsLoggedIn={setIsLoggedIn}
+                        />
+                    }
+                ></Route>
 
             </Routes>
            
