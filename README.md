@@ -1,5 +1,9 @@
 # fitnessTrac.kr_frontEnd
 
+This is the front end of our Fitness Trac.kr app.
+
+General Outline & Notes:
+
 - Navbar
 Title - left side
 Right side:
