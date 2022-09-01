@@ -18,6 +18,8 @@ const Register = ({
           username,
           password,
         });
+
+          console.log("data from registerUser-->", data)
           const token = data.data.token;
           
           console.log("token-->", token)
@@ -51,7 +53,7 @@ const Register = ({
           <p>Username:</p>
           <input
             type="text"
-            minLength="5"
+            minLength="8"
             onChange={(event) => setUsername(event.target.value)}
             required
           />
@@ -61,7 +63,7 @@ const Register = ({
           <input
             type="password"
             name="password"
-            minLength="5"
+            minLength="8"
             onChange={(event) => setPassword(event.target.value)}
             required
           />
