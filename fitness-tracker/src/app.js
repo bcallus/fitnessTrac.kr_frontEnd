@@ -8,7 +8,8 @@ import {
     Routines,
     MyRoutines,
     Activities,
-    LogIn
+    LogIn,
+    Register
 } from "./components"
 
 const App = () => {
@@ -30,6 +31,19 @@ const App = () => {
                 <Route path="/routines" element={<Routines />}></Route>
                 <Route path="/myroutines" element={<MyRoutines />}></Route>
                 <Route path="/activities" element={<Activities />}></Route>
+
+                <Route
+                    path="/register"
+                    element={
+                        <Register 
+                        setToken={setToken}
+                        username={username}
+                        setUsername={setUsername}
+                        password={password}
+                        setPassword={setPassword}
+                        />
+                    }
+                ></Route>
 
                 <Route
                     path="/login"
