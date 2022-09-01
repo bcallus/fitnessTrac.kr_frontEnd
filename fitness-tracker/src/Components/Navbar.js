@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({token, isLoggedIn}) => {
     return (
         <div className="navbar">
         <h1>Fitness Tracker</h1>
@@ -16,7 +16,7 @@ const Navbar = () => {
 
                  {/* my routines link should only show when logged in    */}
                 <li>
-                    <Link to="/myroutines">My Routines</Link>
+                    {token ? <Link to="/myroutines">My Routines</Link> : null}
                 </li>
                     
                 <li>

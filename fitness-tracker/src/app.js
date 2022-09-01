@@ -22,7 +22,7 @@ const App = () => {
     //return routes in here
     return (
         <div>
-            <Navbar />
+            <Navbar token={token} isLoggedIn={isLoggedIn} />
 
             {/* Routes Below */}
             <Routes>
