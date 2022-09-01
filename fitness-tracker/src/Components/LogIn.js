@@ -19,16 +19,16 @@ const LogIn = ({
             username,
             password,
         });
-        console.log("data-->", data)
+        console.log("data from logInUser-->", data)
 
           if (data.success) {
             setIsLoggedIn(true);
             const token = data.data.token;
             setToken(token);
             alert(`${data.data.message}`);
-            navigate("/myroutines");
+            navigate("/myroutines"); //check on this
           } else {
-            alert(`${data.error.message}`);
+            alert(`${data.message}`);
           }
         };
 
@@ -40,7 +40,7 @@ const LogIn = ({
           <input
             type="text"
             onChange={(event) => setUsername(event.target.value)}
-            minLength="5"
+            minLength="8"
             required
           />
         </label>
@@ -49,7 +49,7 @@ const LogIn = ({
           <input
             type="password"
             onChange={(event) => setPassword(event.target.value)}
-            minLength="5"
+            minLength="8"
             required
           />
         </label>

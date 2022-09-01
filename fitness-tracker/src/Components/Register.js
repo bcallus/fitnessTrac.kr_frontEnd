@@ -30,7 +30,7 @@ const Register = ({
           ? alert(`${data.data.message}`)
           : alert(`${data.error.message}`);
         if (token) {
-          navigate("/routines");
+          navigate("/routines"); //check on this
         }
       }
     };
