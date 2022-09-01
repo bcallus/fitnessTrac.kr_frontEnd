@@ -25,6 +25,7 @@ const LogIn = ({
             setIsLoggedIn(true);
             const token = data.data.token;
             setToken(token);
+            console.log("token from ")
             alert(`${data.data.message}`);
             navigate("/myroutines"); //check on this
           } else {
