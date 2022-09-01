@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    // why wouldn't this render??
     return (
         <div className="navbar">
         <h1>Fitness Tracker</h1>
@@ -14,8 +13,17 @@ const Navbar = () => {
                 <li>
                     <Link to="/routines">Routines</Link>
                 </li>
+
+                 {/* my routines link should only show when logged in    */}
+                <li>
+                    <Link to="/myroutines">My Routines</Link>
+                </li>
+                    
                 <li>
                     <Link to="/activities">Activities</Link>
+                </li>
+                <li>
+                    <Link to="/login">Log In</Link>
                 </li>
             </ul>
         </nav>

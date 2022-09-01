@@ -13,3 +13,7 @@
     list-style-type: none;
     gap: 1rem;
 }
+
+.navbar a {
+    text-decoration: none;
+}
