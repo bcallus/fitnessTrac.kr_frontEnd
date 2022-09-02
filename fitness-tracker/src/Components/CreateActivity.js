@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { createNewActivity } from "../api";
 
-const CreateActivity = ({token, activityList, setActivitiesList}) => {
-    const navigate = useNavigate();
+const CreateActivity = ({token, activitiesList, setActivitiesList}) => {
+
 
     const [name, setName] = useState();
     const [description, setDescription] = useState();
 
-    // console.log("token in CreateActivity-->", token)
+    // console.log("token in CreateActivity-->", token) 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -18,6 +17,11 @@ const CreateActivity = ({token, activityList, setActivitiesList}) => {
             description
         });
         console.log("data from createNewActivity-->", data)
+        console.log("activitiesList in createNewActivity before state change-->", activitiesList)
+        activitiesList.push(data)
+        console.log("updated ActivitiesList-->", activitiesList)
+        setActivitiesList([activitiesList]);
+        alert("Your activity has been sucessfully added.");
     };
 
 

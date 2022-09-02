@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Activity from './Activity';
 import CreateActivity from './CreateActivity';
 
-const Activities = ({activitiesList, isLoggedIn}) => {
+const Activities = ({token, activitiesList, setActivitiesList, isLoggedIn}) => {
     // console.log("activitiesList in Activities component-->", activitiesList)
    
     return (
@@ -12,7 +12,11 @@ const Activities = ({activitiesList, isLoggedIn}) => {
 
             {isLoggedIn ?
                 <div className="create-activity-form">
-                    <CreateActivity />
+                    <CreateActivity
+                        token={token}
+                        activitiesList={activitiesList}
+                        setActivitiesList={setActivitiesList}
+                    />
                 </div>
                 : null}
             

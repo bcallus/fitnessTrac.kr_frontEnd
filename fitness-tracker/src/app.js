@@ -47,6 +47,7 @@ const App = () => {
                     path="/activities"
                     element={
                         <Activities 
+                            token={token}
                             activitiesList={activitiesList}
                             isLoggedIn={isLoggedIn}
                         />
