@@ -12,6 +12,7 @@ import {
     LogIn,
     Register,
     LogOut,
+    CreateActivity
 } from "./components"
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
 
     useEffect(() => {
         fetchAllActivities().then((results) => {
-            console.log("results from fetchAllActivities-->", results)
+            // console.log("results from fetchAllActivities-->", results)
             setActivitiesList(results)
         });
 
@@ -47,6 +48,18 @@ const App = () => {
                     element={
                         <Activities 
                             activitiesList={activitiesList}
+                            isLoggedIn={isLoggedIn}
+                        />
+                    }
+                ></Route>
+
+                <Route
+                    path="/activities"
+                    element={
+                        <CreateActivity 
+                            token={token}
+                            activitiesList={activitiesList}
+                            setActivitiesList={setActivitiesList}
                         />
                     }
                 ></Route>

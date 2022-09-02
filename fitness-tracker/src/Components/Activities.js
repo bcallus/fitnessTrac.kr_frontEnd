@@ -1,19 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Activity from './Activity';
+import CreateActivity from './CreateActivity';
 
-const Activities = ({activitiesList}) => {
-    console.log("activitiesList in Activities component-->", activitiesList)
+const Activities = ({activitiesList, isLoggedIn}) => {
+    // console.log("activitiesList in Activities component-->", activitiesList)
    
     return (
-        <div className="activities">
-        {/* Activities Page Test */}
-            {activitiesList ? activitiesList.map(activity => (
-                <Activity
-                    key={activity.id}
-                    activity={activity}
-                />
+        <div>
+            <h1 className="activities-title">All Activities</h1>
+
+            {isLoggedIn ?
+                <div className="create-activity-form">
+                    <CreateActivity />
+                </div>
+                : null}
+            
+            <div className="activities">
+                {activitiesList ? activitiesList.map(activity => (
+                    <Activity
+                        key={activity.id}
+                        activity={activity}
+                    />
             ))
                 : null}
+            </div>
         </div>
     );
 };
