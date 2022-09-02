@@ -19,14 +19,17 @@ const LogIn = ({
             username,
             password,
         });
-        console.log("data from logInUser-->", data)
+      console.log("data from logInUser-->", data)
 
-          if (data.success) {
+          if (data) {
             setIsLoggedIn(true);
-            const token = data.data.token;
+            const token = data.token;
+            
+
             setToken(token);
-            console.log("token from ")
-            alert(`${data.data.message}`);
+            console.log("token from logInUser-->", token)
+
+            alert(`${data.message}`);
             navigate("/myroutines"); //check on this
           } else {
             alert(`${data.message}`);
