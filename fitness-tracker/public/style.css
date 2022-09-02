@@ -17,3 +17,45 @@
 .navbar a {
     text-decoration: none;
 }
+
+.activities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.activities-title {
+    text-align: center;
+}
+
+.activity {
+    border: solid black 1px;
+    width: 20rem;
+    padding: 1rem;
+}
+
+.create-activity-form {
+    padding: 1rem;
+    width: 33vw;
+    border: solid black 1px; 
+    margin-bottom: 1rem;
+}
+
+button {
+    margin: 1rem;
+}
+
+input {
+    margin-left: .5rem;
+    margin-bottom: .5rem;
+    width: auto;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+}
+
+.form {
+    text-align: center;
+}

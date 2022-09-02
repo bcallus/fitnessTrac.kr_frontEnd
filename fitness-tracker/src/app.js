@@ -1,5 +1,6 @@
-import React, { useState } from "react"; //import useEffect hooks (whatever is needed)
+import React, { useState, useEffect } from "react"; //import useEffect hooks (whatever is needed)
 import { Routes, Route } from "react-router-dom";
+import { fetchAllActivities } from "./api";
 
 //import components
 import {
@@ -9,7 +10,9 @@ import {
     MyRoutines,
     Activities,
     LogIn,
-    Register
+    Register,
+    LogOut,
+    CreateActivity
 } from "./components"
 
 const App = () => {
@@ -18,6 +21,15 @@ const App = () => {
     const [password, setPassword] = useState();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState();
+    const [activitiesList, setActivitiesList] = useState();
+
+    useEffect(() => {
+        fetchAllActivities().then((results) => {
+            // console.log("results from fetchAllActivities-->", results)
+            setActivitiesList(results)
+        });
+
+    })
 
     //return routes in here
     return (
@@ -30,7 +42,28 @@ const App = () => {
                 <Route exact path="/" element={<Home />}></Route>
                 <Route path="/routines" element={<Routines />}></Route>
                 <Route path="/myroutines" element={<MyRoutines />}></Route>
-                <Route path="/activities" element={<Activities />}></Route>
+
+                <Route
+                    path="/activities"
+                    element={
+                        <Activities 
+                            token={token}
+                            activitiesList={activitiesList}
+                            isLoggedIn={isLoggedIn}
+                        />
+                    }
+                ></Route>
+
+                <Route
+                    path="/activities"
+                    element={
+                        <CreateActivity 
+                            token={token}
+                            activitiesList={activitiesList}
+                            setActivitiesList={setActivitiesList}
+                        />
+                    }
+                ></Route>
 
                 <Route
                     path="/register"
@@ -56,6 +89,16 @@ const App = () => {
                         setToken={setToken}
                         isLoggedin={isLoggedIn}
                         setIsLoggedIn={setIsLoggedIn}
+                        />
+                    }
+                ></Route>
+
+                <Route
+                    path="/logout"
+                    element={
+                        <LogOut 
+                            setIsLoggedIn={setIsLoggedIn}
+                            setToken={setToken}
                         />
                     }
                 ></Route>

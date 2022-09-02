@@ -41,4 +41,44 @@ export async function logInUser({ username, password }) {
     } catch (error) {
       console.error(error);
     }
+}
+  
+export async function fetchAllActivities() {
+  try {
+    return fetch(`${BASE_URL}/activities`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+      return result;
+      });
   }
+  catch (error) {
+    console.error(error);
+  }
+}
+
+export async function createNewActivity({token, name, description}) {
+  try {
+    return fetch(`${BASE_URL}/activities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name: name,
+        description: description
+      })
+    })
+      .then((response) => response.json())
+      .then((result) => {
+      return result;
+    });
+  }
+  catch (error) {
+    console.error(error)
+  }
+}
