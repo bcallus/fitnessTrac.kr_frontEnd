@@ -17,3 +17,16 @@
 .navbar a {
     text-decoration: none;
 }
+
+.activities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.activity {
+    border: solid black 1px;
+    width: 20rem;
+    padding: 1rem;
+}

@@ -41,4 +41,21 @@ export async function logInUser({ username, password }) {
     } catch (error) {
       console.error(error);
     }
+}
+  
+export async function fetchAllActivities() {
+  try {
+    return fetch(`${BASE_URL}/activities`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        return result;
+      });
   }
+  catch (error) {
+    console.error(error);
+  }
+}

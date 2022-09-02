@@ -6,3 +6,4 @@ export { default as Activities } from './Activities';
 export { default as LogIn } from './LogIn';
 export { default as Register } from './Register';
 export { default as LogOut } from './LogOut';
+export { default as Activity } from './Activity';
