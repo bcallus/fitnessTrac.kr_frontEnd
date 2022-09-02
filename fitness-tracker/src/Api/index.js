@@ -62,7 +62,7 @@ export async function fetchAllActivities() {
 
 export async function createNewActivity({token, name, description}) {
   try {
-    fetch(`${BASE_URL}/activities`, {
+    return fetch(`${BASE_URL}/activities`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

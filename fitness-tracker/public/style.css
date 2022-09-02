@@ -50,4 +50,12 @@ input {
     margin-left: .5rem;
     margin-bottom: .5rem;
     width: auto;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+}
+
+.form {
+    text-align: center;
 }
