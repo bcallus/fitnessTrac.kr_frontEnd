@@ -20,15 +20,15 @@ const Register = ({
         });
 
           console.log("data from registerUser-->", data)
-          const token = data.data.token;
+          const token = data.token;
           
-          console.log("token-->", token)
+          // console.log("token-->", token)
           
         localStorage.setItem("token", JSON.stringify(token));
         setToken(token);
-        data.success
-          ? alert(`${data.data.message}`)
-          : alert(`${data.error.message}`);
+        data
+          ? alert(`${data.message}`)
+          : alert(`${data.error}`);
         if (token) {
           navigate("/routines"); //check on this
         }

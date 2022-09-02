@@ -21,11 +21,11 @@ const LogIn = ({
         });
         console.log("data from logInUser-->", data)
 
-          if (data.success) {
+          if (data) {
             setIsLoggedIn(true);
-            const token = data.data.token;
+            const token = data.token;
             setToken(token);
-            alert(`${data.data.message}`);
+            alert(`${data.message}`);
             navigate("/myroutines"); //check on this
           } else {
             alert(`${data.message}`);
