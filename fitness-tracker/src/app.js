@@ -9,7 +9,8 @@ import {
     MyRoutines,
     Activities,
     LogIn,
-    Register
+    Register,
+    LogOut
 } from "./components"
 
 const App = () => {
@@ -56,6 +57,16 @@ const App = () => {
                         setToken={setToken}
                         isLoggedin={isLoggedIn}
                         setIsLoggedIn={setIsLoggedIn}
+                        />
+                    }
+                ></Route>
+
+                <Route
+                    path="/logout"
+                    element={
+                        <LogOut 
+                            setIsLoggedIn={setIsLoggedIn}
+                            setToken={setToken}
                         />
                     }
                 ></Route>

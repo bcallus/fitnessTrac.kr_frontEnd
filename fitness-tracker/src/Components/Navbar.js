@@ -22,8 +22,12 @@ const Navbar = ({token, isLoggedIn}) => {
                 <li>
                     <Link to="/activities">Activities</Link>
                 </li>
-                <li>
-                    <Link to="/login">Log In</Link>
+                    
+                    <li>
+                        {isLoggedIn ?
+                            <Link to="/logout">Log Out</Link> 
+                            : <Link to="/login">Log In</Link> 
+                        }
                 </li>
             </ul>
         </nav>
