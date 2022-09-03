@@ -1,4 +1,4 @@
-import React, { useState } from "react"; //import useEffect hooks (whatever is needed)
+import React, { useState, useEffect } from "react"; //import useEffect hooks (whatever is needed)
 import { Routes, Route } from "react-router-dom";
 
 //import components
@@ -9,7 +9,7 @@ import {
     MyRoutines,
     Activities,
     LogIn,
-    Register
+    Register,
 } from "./components"
 
 const App = () => {
@@ -18,6 +18,23 @@ const App = () => {
     const [password, setPassword] = useState();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState();
+
+    useEffect(() => {
+        onLoad();
+    }, []);
+
+    function onLoad() {
+        try{
+            const storedToken = JSON.parse(localStorage.getItem('token'))
+            if (storedToken) {
+                setToken(storedToken)
+            }
+        } catch (e) {
+            if (e !== "No current user") {
+                alert(e);
+            }
+        }
+    }
 
     //return routes in here
     return (

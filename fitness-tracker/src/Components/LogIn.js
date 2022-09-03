@@ -28,6 +28,8 @@ const LogIn = ({
 
             setToken(token);
             console.log("token from logInUser-->", token)
+            localStorage.setItem('token', token)
+            localStorage.setItem('username', username)
 
             alert(`${data.message}`);
             navigate("/myroutines"); //check on this

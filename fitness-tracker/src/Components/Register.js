@@ -26,6 +26,8 @@ const Register = ({
           
         localStorage.setItem("token", JSON.stringify(token));
         setToken(token);
+        localStorage.setItem('token', token)
+        localStorage.setItem('username', username)
         data
           ? alert(`${data.message}`)
           : alert(`${data.error}`);
