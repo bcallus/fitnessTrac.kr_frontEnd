@@ -49,7 +49,7 @@ const UpdateRoutines = ({routines, setRoutines, routineId, setRoutineId}) => {
               type="checkbox"
               value={isPublic}
               defaultChecked={true}
-              onChange={(event) => setIsPublic(event.target.value)}
+              onChange={(event) => setIsPublic(event.target.checked)}
             />
           </label>
           <div>

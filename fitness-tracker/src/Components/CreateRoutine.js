@@ -14,7 +14,7 @@ const CreateRoutine = ({ routines, setRoutines }) => {
     console.log("Routine Name: " + name);
     console.log("reoutine goal: " + goal);
     setToken(localStorage.getItem("token"));
-		const result = await createUserRoutines(name, goal, isPublic, token);
+		const result = await createUserRoutines({name, goal, isPublic, token});
 		if (
 			message ===
 			'duplicate key value violates key constraints "routines_name_key"'
@@ -58,7 +58,7 @@ const CreateRoutine = ({ routines, setRoutines }) => {
               type="checkbox"
               value={isPublic}
               defaultChecked={true}
-              onChange={(event) => setIsPublic(event.target.value)}
+              onChange={(event) => setIsPublic(event.target.checked)}
             />
           </label>
           <div>
