@@ -63,16 +63,17 @@ export async function getAllRoutines() {
 
 export async function getUserRoutines({token, username}) {
   try {
-    console.log(token)
+    console.log(token);
     await fetch(`${BASE_URL}/users/${username}/routines`, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': 'Bearer ' + token
       },
     })
     .then(response => response.json())
     .then(result => {
       console.log(result);
+      return result;
     })
     .catch(console.error);
   } catch (error) {

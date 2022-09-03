@@ -24,17 +24,18 @@ const MyRoutines = () => {
 
     useEffect(() => {
         setUserRoutines(getUserRoutines({token, username}));
+        console.log(userRoutines);
     }, [token, username]);
 
     return (
         <div>
             <h1>My Routines Page Test</h1>
-            {/* {userRoutines.map((routine) =>
+            {userRoutines.map((routine) =>
             (<div key={routine._id}>
-                <h2>{routine.fromUser.username}</h2>
-                <h3>{routine.content}</h3>
+                <h2>{routine.name}</h2>
+                <h3>{routine.goal}</h3>
                 </div>
-                ))} */}
+                ))}
             <CreateRoutine />
         </div>
     );
