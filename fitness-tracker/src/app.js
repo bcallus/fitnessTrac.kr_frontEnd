@@ -48,13 +48,21 @@ const App = () => {
 
                 <Route
                     path="/routines"
-                    element={<Routines 
-                        routinesList={routinesList}
+                    element={
+                        <Routines 
+                            routinesList={routinesList}
                     />
                     }
                 ></Route>
 
-                <Route path="/myroutines" element={<MyRoutines />}></Route>
+                <Route
+                    path="/myroutines"
+                    element={
+                        <MyRoutines 
+                            token={token}
+                    />
+                    }
+                ></Route>
 
                 <Route
                     path="/activities"
