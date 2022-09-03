@@ -13,7 +13,7 @@ const LogOut = ({ setIsLoggedIn, setToken }) => {
 
   return (
       <div>
-          <p>Log Out Page Test</p>
+          <p>Log Out </p>
       <button className="logout-button" onClick={handleLogout}>
         Click here to log out.
       </button>

@@ -33,12 +33,9 @@ const App = () => {
             console.log("results from fetchAllRoutines-->", results)
             setRoutinesList(results);
         });
+        onLoad();
 
     },[])
-
-    useEffect(() => {
-        onLoad();
-    }, []);
 
     function onLoad() {
         try{
@@ -71,7 +68,7 @@ const App = () => {
                     }
                 ></Route>
 
-                <Route path="/myroutines" element={<MyRoutines token={token}/>}></Route>
+                <Route path="/myroutines" element={<MyRoutines token={token} isLoggedIn={isLoggedIn}/>}></Route>
 
                 <Route
                     path="/activities"
