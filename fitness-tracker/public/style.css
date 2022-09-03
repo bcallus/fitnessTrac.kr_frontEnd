@@ -18,18 +18,18 @@
     text-decoration: none;
 }
 
-.activities {
+.activities, .routines {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 1rem;
 }
 
-.activities-title {
+.activities-title, .routines-title {
     text-align: center;
 }
 
-.activity {
+.activity, .routine {
     border: solid black 1px;
     width: 20rem;
     padding: 1rem;

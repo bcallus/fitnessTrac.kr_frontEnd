@@ -28,6 +28,10 @@ const Navbar = ({token, isLoggedIn}) => {
                             <Link to="/logout">Log Out</Link> 
                             : <Link to="/login">Log In</Link> 
                         }
+                    </li>
+                
+                <li>
+                    <Link to="/register">Sign Up</Link>
                 </li>
             </ul>
         </nav>
