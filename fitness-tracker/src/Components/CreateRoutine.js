@@ -5,7 +5,7 @@ const CreateRoutine = ({ routines, setRoutines }) => {
 	const [token, setToken] = useState(localStorage.getItem("token"));
 	const [name, setName] = useState("");
 	const [goal, setGoal] = useState("");
-	const [isPublic, setIsPublic] = useState(null);
+	const [isPublic, setIsPublic] = useState(true);
 	const [message, setMessage] = useState("");
 
 	const handleSubmit = async (event) => {
@@ -14,7 +14,7 @@ const CreateRoutine = ({ routines, setRoutines }) => {
     console.log("Routine Name: " + name);
     console.log("reoutine goal: " + goal);
     setToken(localStorage.getItem("token"));
-		const result = await createUserRoutines({name, goal, isPublic, token});
+		const result = await createUserRoutines({name, goal, isPublic});
 		if (
 			message ===
 			'duplicate key value violates key constraints "routines_name_key"'
