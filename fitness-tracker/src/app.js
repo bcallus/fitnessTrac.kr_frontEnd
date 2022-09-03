@@ -46,8 +46,8 @@ const App = () => {
 
                 <Route exact path="/" element={<Home />}></Route>
                 <Route path="/routines" element={<Routines />}></Route>
-                <Route path="/myroutines" element={<MyRoutines />}></Route>
-                <Route path="/activities" element={<Activities />}></Route>
+                <Route path="/myroutines" element={<MyRoutines token={token}/>}></Route>
+                <Route path="/activities" element={<Activities token={token}/>}></Route>
 
                 <Route
                     path="/register"

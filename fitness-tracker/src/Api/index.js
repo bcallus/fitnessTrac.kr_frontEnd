@@ -64,18 +64,23 @@ export async function getAllRoutines() {
 export async function getUserRoutines({token, username}) {
   try {
     console.log(token);
-    await fetch(`${BASE_URL}/users/${username}/routines`, {
+    const request = await fetch(`${BASE_URL}/users/${username}/routines`, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
       },
     })
-    .then(response => response.json())
-    .then(result => {
-      console.log(result);
-      return result;
-    })
-    .catch(console.error);
+    if(!request.ok){
+      console.log(request);
+    }
+    const result = await request.json();
+    return result;
+    // .then(response => response.json())
+    // .then(result => {
+    //   //console.log(result);
+    //   return result;
+    // })
+    // .catch(console.error);
   } catch (error) {
     console.error(error, token)
 
