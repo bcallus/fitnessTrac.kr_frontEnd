@@ -57,7 +57,7 @@ const CreateRoutine = ({routines, setRoutines}) => {
           </label>
           <div>
             <button type="submit">Submit</button>
-            <p>{message}</p>
+            {/* <p>{message}</p> */}
           </div>
         </form>
         {/* <MyRoutines token={token} username={username} /> */}
