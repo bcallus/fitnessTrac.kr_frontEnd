@@ -25,7 +25,7 @@ const MyRoutines = () => {
     useEffect(() => {
         setUserRoutines(getUserRoutines({token, username}));
         console.log(userRoutines);
-    }, [token, username]);
+    }, [token, username, userRoutines]);
 
     return (
         <div>
