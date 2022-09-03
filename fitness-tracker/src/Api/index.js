@@ -73,23 +73,6 @@ export async function getAllRoutines() {
 	} catch (error) {
 		console.error(error);
 	}
-
-	// try {
-	// 	await fetch("http://fitnesstrac-kr.herokuapp.com/api/routines", {
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 		},
-	// 	})
-	// 		.then((response) => response.json())
-	// 		.then((result) => {
-	// 			console.log("Data from getAllRoutines: ");
-	// 			console.log(result);
-	// 			return result;
-	// 		})
-	// 		.catch(console.error);
-	// } catch (error) {
-	// 	throw error;
-	// }
 }
 
 export async function getUserRoutines({ token, username }) {
@@ -106,12 +89,6 @@ export async function getUserRoutines({ token, username }) {
 		}
 		const result = await request.json();
 		return result;
-		// .then(response => response.json())
-		// .then(result => {
-		//   //console.log(result);
-		//   return result;
-		// })
-		// .catch(console.error);
 	} catch (error) {
 		console.error(error, token);
 	}
