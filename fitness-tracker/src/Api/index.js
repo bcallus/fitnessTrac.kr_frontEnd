@@ -1,5 +1,3 @@
-import { Routines } from "../components";
-
 export const BASE_URL = "http://fitnesstrac-kr.herokuapp.com/api";
 
 export async function registerUser({ username, password }) {
@@ -66,7 +64,7 @@ export async function getAllRoutines() {
 export async function getUserRoutines({token, username}) {
   try {
     console.log(token)
-    fetch(`${BASE_URL}/users/${username}/routines`, {
+    await fetch(`${BASE_URL}/users/${username}/routines`, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
@@ -85,11 +83,11 @@ export async function getUserRoutines({token, username}) {
 
 export async function createUserRoutines ({ name, goal, isPublic, token }) {
   try {
-    fetch(`${BASE_URL}/routines`, {
+    await fetch(`${BASE_URL}/routines`, {
       method: "POST",
       headers: {
         'Content-type': 'Application/json',
-        'Authorization': `Bearer ${token}`,
+        'Authorization': 'Bearer ' + localStorage.getItem('token'),
       },
       body: JSON.stringify({
         name: name,
@@ -100,6 +98,7 @@ export async function createUserRoutines ({ name, goal, isPublic, token }) {
     .then(response => response.json())
     .then(result => {
       console.log(result);
+      return result;
     })
     .catch(console.error)
   } catch (error) {
@@ -109,7 +108,7 @@ export async function createUserRoutines ({ name, goal, isPublic, token }) {
 
 export async function editUserRoutines({ routineId, name, goal, isPublic, token }) {
   try {
-    fetch(`${BASE_URL}/routines/:routineId`, {
+    await fetch(`${BASE_URL}/routines/:${routineId}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json',
