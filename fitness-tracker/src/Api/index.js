@@ -81,7 +81,7 @@ export async function getUserRoutines({token, username}) {
   }
 }
 
-export async function createUserRoutines ({ name, goal, isPublic, token }) {
+export async function createUserRoutines ({ name, goal, isPublic}) {
   try {
     await fetch(`${BASE_URL}/routines`, {
       method: "POST",
