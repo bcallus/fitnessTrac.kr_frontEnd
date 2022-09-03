@@ -13,7 +13,6 @@ import {
     Register,
     LogOut,
     CreateActivity,
-    Routine
 } from "./components"
 
 const App = () => {
