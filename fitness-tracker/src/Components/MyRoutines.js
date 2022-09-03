@@ -6,7 +6,7 @@ const MyRoutines = (props) => {
     // const [token, setToken] = useState(localStorage.getItem('token'))
     const {token} = props;
     const [userRoutines, setUserRoutines] = useState([]);
-    const [username, setUsername] = useState(localStorage.getItem('username'))
+    const [username, setUsername] = useState(localStorage.getItem('username'));
     console.log(userRoutines);
     // useEffect(() => {
     //     const fetchUserRoutine = async () => {
