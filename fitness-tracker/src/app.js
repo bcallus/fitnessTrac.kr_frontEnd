@@ -11,9 +11,12 @@ import {
     Activities,
     LogIn,
     Register,
+<<<<<<< HEAD
     LogOut,
     CreateActivity,
     Routine
+=======
+>>>>>>> recovery
 } from "./components"
 
 const App = () => {
@@ -37,6 +40,23 @@ const App = () => {
 
     },[])
 
+    useEffect(() => {
+        onLoad();
+    }, []);
+
+    function onLoad() {
+        try{
+            const storedToken = localStorage.getItem('token');
+            if (storedToken) {
+                setToken(storedToken)
+            }
+        } catch (e) {
+            if (e !== "No current user") {
+                alert(e);
+            }
+        }
+    }
+
     //return routes in here
     return (
         <div>
@@ -46,6 +66,7 @@ const App = () => {
             <Routes>
 
                 <Route exact path="/" element={<Home />}></Route>
+<<<<<<< HEAD
 
                 <Route
                     path="/routines"
@@ -79,6 +100,11 @@ const App = () => {
                         />
                     }
                 ></Route>
+=======
+                <Route path="/routines" element={<Routines />}></Route>
+                <Route path="/myroutines" element={<MyRoutines token={token}/>}></Route>
+                <Route path="/activities" element={<Activities token={token}/>}></Route>
+>>>>>>> recovery
 
                 <Route
                     path="/register"

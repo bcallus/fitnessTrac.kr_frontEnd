@@ -9,6 +9,7 @@ const LogIn = ({
 	setPassword,
 	setToken,
 	setIsLoggedIn,
+	token
 }) => {
 	const navigate = useNavigate();
 
@@ -21,9 +22,10 @@ const LogIn = ({
 		});
 		console.log("data from logInUser-->", data);
 
-		if (data) {
-			setIsLoggedIn(true);
-			const token = data.token;
+            setToken(token);
+            console.log("token from logInUser-->", token)
+            localStorage.setItem('token', token)
+            localStorage.setItem('username', username)
 
 			setToken(token);
 			console.log("token from logInUser-->", token);
@@ -31,10 +33,7 @@ const LogIn = ({
 
 			alert(`${data.message}`);
 			navigate("/myroutines"); //check on this
-		} else {
-			alert(`${data.message}`);
 		}
-	};
 
 	return (
 		<form className="form" onSubmit={handleSubmit}>
