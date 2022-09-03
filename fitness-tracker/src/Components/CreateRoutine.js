@@ -1,30 +1,36 @@
-import React, { useState } from 'react';
-import { createUserRoutines } from '../api';
+import React, { useState } from "react";
+import { createUserRoutines } from "../api";
 
-const CreateRoutine = ({routines, setRoutines}) => {
-    const [token, setToken] = useState(localStorage.getItem('token'))
-    const [name, setName] = useState('');
-    const [goal, setGoal] = useState('');
-    const [isPublic, setIsPublic] = useState(null);
-    const [message, setMessage] = useState('');
+const CreateRoutine = ({ routines, setRoutines }) => {
+	const [token, setToken] = useState(localStorage.getItem("token"));
+	const [name, setName] = useState("");
+	const [goal, setGoal] = useState("");
+	const [isPublic, setIsPublic] = useState(null);
+	const [message, setMessage] = useState("");
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        // console.log(`Bearer ${token}`)
-        const result = await createUserRoutines(name, goal, isPublic, token)
-          if (result.message === 'duplicate key value violates key constraints "routines_name_key"') {
-            setMessage(`a routine with name ${name} already exists`)
-          } else {
-            if (result.message) {
-              setMessage(result.message)
-            } else {
-              setMessage("Routine Added")
-              setName('');
-              setGoal('');
-              setIsPublic(false);
-            }
-          } 
-        }
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		console.log(`Bearer ${token}`);
+    console.log("Routine Name: " + name);
+    console.log("reoutine goal: " + goal);
+    setToken(localStorage.getItem("token"));
+		const result = await createUserRoutines(name, goal, isPublic, token);
+		if (
+			message ===
+			'duplicate key value violates key constraints "routines_name_key"'
+		) {
+			setMessage(`a routine with name ${name} already exists`);
+		} else {
+			if (message) {
+				setMessage(message);
+			} else {
+				setMessage("Routine Added");
+				setName("");
+				setGoal("");
+				setIsPublic(false);
+			}
+		}
+	};
 
     return(
       <div>

@@ -25,7 +25,7 @@ const App = () => {
 
     function onLoad() {
         try{
-            const storedToken = JSON.parse(localStorage.getItem('token'))
+            const storedToken = localStorage.getItem('token');
             if (storedToken) {
                 setToken(storedToken)
             }
