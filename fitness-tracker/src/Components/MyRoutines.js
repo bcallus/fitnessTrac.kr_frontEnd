@@ -33,9 +33,6 @@ const MyRoutines = (props) => {
         // setUserRoutines(getUserRoutines({token, username}));
         getUserRoutines({token, username})
         .then(data => setUserRoutines(data))
-        .then(() => {
-            console.log(userRoutines);
-        })
         .catch(console.error);
         // console.log(userRoutines);
     }, []);

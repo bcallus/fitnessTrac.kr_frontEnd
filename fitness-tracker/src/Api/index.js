@@ -35,6 +35,23 @@ export async function logInUser({ username, password }) {
 		})
 			.then((response) => response.json())
 			.then((result) => {
+				localStorage.setItem("token", result.token);
+				return result;
+			});
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export async function fetchAllActivities() {
+	try {
+		return fetch(`${BASE_URL}/activities`, {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((result) => {
 				return result;
 			});
 	} catch (error) {
@@ -44,14 +61,78 @@ export async function logInUser({ username, password }) {
 
 export async function getAllRoutines() {
 	try {
-		fetch("http://fitnesstrac-kr.herokuapp.com/api/routines", {
+		return await fetch(`${BASE_URL}/routines`, {
 			headers: {
 				"Content-Type": "application/json",
 			},
 		})
 			.then((response) => response.json())
 			.then((result) => {
-				console.log("Data from getAllRoutines: ");
+				return result;
+			});
+	} catch (error) {
+		console.error(error);
+	}
+
+	// try {
+	// 	await fetch("http://fitnesstrac-kr.herokuapp.com/api/routines", {
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 	})
+	// 		.then((response) => response.json())
+	// 		.then((result) => {
+	// 			console.log("Data from getAllRoutines: ");
+	// 			console.log(result);
+	// 			return result;
+	// 		})
+	// 		.catch(console.error);
+	// } catch (error) {
+	// 	throw error;
+	// }
+}
+
+export async function getUserRoutines({ token, username }) {
+	try {
+		console.log(token);
+		const request = await fetch(`${BASE_URL}/users/${username}/routines`, {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: "Bearer " + localStorage.getItem("token"),
+			},
+		});
+		if (!request.ok) {
+			console.log(request);
+		}
+		const result = await request.json();
+		return result;
+		// .then(response => response.json())
+		// .then(result => {
+		//   //console.log(result);
+		//   return result;
+		// })
+		// .catch(console.error);
+	} catch (error) {
+		console.error(error, token);
+	}
+}
+
+export async function createUserRoutines({ name, goal, isPublic }) {
+	try {
+		await fetch(`${BASE_URL}/routines`, {
+			method: "POST",
+			headers: {
+				"Content-type": "Application/json",
+				Authorization: "Bearer " + localStorage.getItem("token"),
+			},
+			body: JSON.stringify({
+				name: name,
+				goal: goal,
+				isPublic: isPublic,
+			}),
+		})
+			.then((response) => response.json())
+			.then((result) => {
 				console.log(result);
 				return result;
 			})
@@ -61,135 +142,54 @@ export async function getAllRoutines() {
 	}
 }
 
-export async function getUserRoutines({token, username}) {
-  try {
-    console.log(token);
-    const request = await fetch(`${BASE_URL}/users/${username}/routines`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      },
-    })
-    if(!request.ok){
-      console.log(request);
-    }
-<<<<<<< HEAD
-}
-  
-export async function fetchAllActivities() {
-  try {
-    return fetch(`${BASE_URL}/activities`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((result) => {
-      return result;
-      });
-  }
-  catch (error) {
-    console.error(error);
-  }
+export async function editUserRoutines({
+	routineId,
+	name,
+	goal,
+	isPublic,
+	token,
+}) {
+	try {
+		await fetch(`${BASE_URL}/routines/:${routineId}`, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({
+				name: name,
+				goal: goal,
+				isPublic: isPublic,
+			}),
+		})
+			.then((response) => response.json())
+			.then((result) => {
+				console.log(result);
+			})
+			.catch(console.error);
+	} catch (error) {
+		throw error;
+	}
 }
 
-export async function createNewActivity({token, name, description}) {
-  try {
-    return fetch(`${BASE_URL}/activities`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-=======
-    const result = await request.json();
-    return result;
-    // .then(response => response.json())
-    // .then(result => {
-    //   //console.log(result);
-    //   return result;
-    // })
-    // .catch(console.error);
-  } catch (error) {
-    console.error(error, token)
-
-  }
-}
-
-export async function createUserRoutines ({ name, goal, isPublic}) {
-  try {
-    await fetch(`${BASE_URL}/routines`, {
-      method: "POST",
-      headers: {
-        'Content-type': 'Application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token'),
-      },
-      body: JSON.stringify({
-        name: name,
-        goal: goal,
-        isPublic: isPublic
-      })
-    })
-    .then(response => response.json())
-    .then(result => {
-      console.log(result);
-      return result;
-    })
-    .catch(console.error)
-  } catch (error) {
-    throw error
-  }
-}
-
-export async function editUserRoutines({ routineId, name, goal, isPublic, token }) {
-  try {
-    await fetch(`${BASE_URL}/routines/:${routineId}`, {
-      method: "PATCH",
-      headers: {
-        'Content-Type': 'application/json',
->>>>>>> recovery
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        name: name,
-<<<<<<< HEAD
-        description: description
-      })
-    })
-      .then((response) => response.json())
-      .then((result) => {
-      return result;
-    });
-  }
-  catch (error) {
-    console.error(error)
-  }
-}
-
-export async function fetchAllRoutines() {
-  try {
-    return await fetch(`${BASE_URL}/routines`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((result) => {
-      return result;
-      });
-  }
-  catch (error) {
-    console.error(error);
-=======
-        goal: goal,
-        isPublic: isPublic,
-      })
-    })
-    .then(response => response.json())
-    .then(result => {
-      console.log(result);
-    })
-    .catch(console.error);
-  } catch (error) {
-    throw error
->>>>>>> recovery
-  }
+export async function createNewActivity({ token, name, description }) {
+	try {
+		return fetch(`${BASE_URL}/activities`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({
+				name: name,
+				description: description,
+			}),
+		})
+			.then((response) => response.json())
+			.then((result) => {
+				return result;
+			});
+	} catch (error) {
+		console.error(error);
+	}
 }

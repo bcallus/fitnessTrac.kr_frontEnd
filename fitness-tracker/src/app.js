@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"; //import useEffect hooks (whatever is needed)
 import { Routes, Route } from "react-router-dom";
-import { fetchAllActivities, fetchAllRoutines } from "./api";
+import { fetchAllActivities, getAllRoutines } from "./api";
 
 //import components
 import {
@@ -11,12 +11,8 @@ import {
     Activities,
     LogIn,
     Register,
-<<<<<<< HEAD
     LogOut,
     CreateActivity,
-    Routine
-=======
->>>>>>> recovery
 } from "./components"
 
 const App = () => {
@@ -26,16 +22,16 @@ const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState();
     const [activitiesList, setActivitiesList] = useState();
-    const [routinesList, setRoutinesList] = useState();
+    const [routinesList, setRoutinesList] = useState([{}]);
 
     useEffect(() => {
         fetchAllActivities().then((results) => {
             // console.log("results from fetchAllActivities-->", results)
-            setActivitiesList(results)
+            setActivitiesList(results);
         });
-        fetchAllRoutines().then((results) => {
-            // console.log("results from fetchAllRoutines-->", results)
-            setRoutinesList(results)
+        getAllRoutines().then((results) => {
+            console.log("results from fetchAllRoutines-->", results)
+            setRoutinesList(results);
         });
 
     },[])
@@ -66,7 +62,6 @@ const App = () => {
             <Routes>
 
                 <Route exact path="/" element={<Home />}></Route>
-<<<<<<< HEAD
 
                 <Route
                     path="/routines"
@@ -76,7 +71,7 @@ const App = () => {
                     }
                 ></Route>
 
-                <Route path="/myroutines" element={<MyRoutines />}></Route>
+                <Route path="/myroutines" element={<MyRoutines token={token}/>}></Route>
 
                 <Route
                     path="/activities"
@@ -100,11 +95,6 @@ const App = () => {
                         />
                     }
                 ></Route>
-=======
-                <Route path="/routines" element={<Routines />}></Route>
-                <Route path="/myroutines" element={<MyRoutines token={token}/>}></Route>
-                <Route path="/activities" element={<Activities token={token}/>}></Route>
->>>>>>> recovery
 
                 <Route
                     path="/register"
