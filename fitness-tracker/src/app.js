@@ -63,6 +63,7 @@ const App = () => {
                         <Activities 
                             token={token}
                             activitiesList={activitiesList}
+                            setActivitiesList={setActivitiesList}
                             isLoggedIn={isLoggedIn}
                         />
                     }

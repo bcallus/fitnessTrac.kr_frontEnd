@@ -3,7 +3,6 @@ import { createNewActivity } from "../api";
 
 const CreateActivity = ({token, activitiesList, setActivitiesList}) => {
 
-
     const [name, setName] = useState();
     const [description, setDescription] = useState();
 
