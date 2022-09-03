@@ -29,10 +29,11 @@
     text-align: center;
 }
 
-.activity, .routine {
+.activity {
     border: solid black 1px;
     width: 20rem;
     padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .create-activity-form {
@@ -58,4 +59,18 @@ input {
 
 .form {
     text-align: center;
+}
+
+.routine {
+    border: solid black 1px;
+    width: 20rem;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.activity-in-routine {
+    border: solid black 1px;
+    padding-left: 1rem;
+    margin-bottom: .5rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

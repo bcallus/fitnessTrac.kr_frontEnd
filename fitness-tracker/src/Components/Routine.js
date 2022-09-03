@@ -1,5 +1,4 @@
 import React from "react";
-import Activity from "./Activity";
 
 const Routine = ({routine}) => {
     // console.log("routine.activities in Routine-->", routine.activities)
@@ -10,13 +9,15 @@ const Routine = ({routine}) => {
             <p>Name: {routine.name}</p>
             <p>Goal: {routine.goal}</p>
             <p>Creator Name: {routine.creatorName}</p>
-            {routine.activities ? routine.activities.map(activity => (
-        <div className="activity-in-routine">
-            <p><b>Activity #{activity.id}</b></p>
-            <p>Name: {activity.name}</p>
-            <p>Description: {activity.description}</p>
-        </div>
-    )) : null}
+            <div className="activites-in-routine">
+            {routine.activities ? routine.activities.map(activity => ( //needs a key prop
+                <div className="activity-in-routine" key={activity.id}>
+                <p><b>Activity #{activity.id}</b></p>
+                <p>Name: {activity.name}</p>
+                <p>Description: {activity.description}</p>
+                </div>
+            )) : null}
+            </div>
         </div>
     )
 }
