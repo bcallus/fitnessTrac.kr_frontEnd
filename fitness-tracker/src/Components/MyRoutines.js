@@ -23,6 +23,12 @@ const MyRoutines = (props) => {
     //     fetchUserRoutine()
     // }, [token]);
 
+    const RoutineCardStyle = {
+        border: "2px solid black",
+        padding: "1em",
+        margin: '1em'
+    }
+
     useEffect(() => {
         // setUserRoutines(getUserRoutines({token, username}));
         getUserRoutines({token, username})
@@ -37,12 +43,15 @@ const MyRoutines = (props) => {
     return (
         <div>
             <h1>My Routines Page Test</h1>
+            <div >
             {userRoutines.map((routine) =>
-            (<div key={routine.id}>
+            (<div key={routine.id} style={RoutineCardStyle}>
                 <h2>{routine.name}</h2>
                 <h3>{routine.goal}</h3>
                 </div>
                 ))}
+            </div>
+            
             <CreateRoutine />
         </div>
     );
