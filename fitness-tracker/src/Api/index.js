@@ -85,7 +85,7 @@ export async function createNewActivity({token, name, description}) {
 
 export async function fetchAllRoutines() {
   try {
-    return fetch(`${BASE_URL}/routines`, {
+    return await fetch(`${BASE_URL}/routines`, {
       headers: {
         "Content-Type": "application/json",
       },

@@ -30,16 +30,12 @@ const App = () => {
             // console.log("results from fetchAllActivities-->", results)
             setActivitiesList(results)
         });
-
-    })
-
-    useEffect(() => {
-       fetchAllRoutines().then((results) => {
+        fetchAllRoutines().then((results) => {
             // console.log("results from fetchAllRoutines-->", results)
             setRoutinesList(results)
         });
 
-    })
+    },[])
 
     //return routes in here
     return (
