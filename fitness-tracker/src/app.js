@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"; //import useEffect hooks (whatever is needed)
 import { Routes, Route } from "react-router-dom";
-import { fetchAllActivities } from "./api";
+import { fetchAllActivities, fetchAllRoutines } from "./api";
 
 //import components
 import {
@@ -12,7 +12,8 @@ import {
     LogIn,
     Register,
     LogOut,
-    CreateActivity
+    CreateActivity,
+    Routine
 } from "./components"
 
 const App = () => {
@@ -22,11 +23,20 @@ const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState();
     const [activitiesList, setActivitiesList] = useState();
+    const [routinesList, setRoutinesList] = useState();
 
     useEffect(() => {
         fetchAllActivities().then((results) => {
             // console.log("results from fetchAllActivities-->", results)
             setActivitiesList(results)
+        });
+
+    })
+
+    useEffect(() => {
+       fetchAllRoutines().then((results) => {
+            // console.log("results from fetchAllRoutines-->", results)
+            setRoutinesList(results)
         });
 
     })
@@ -40,7 +50,15 @@ const App = () => {
             <Routes>
 
                 <Route exact path="/" element={<Home />}></Route>
-                <Route path="/routines" element={<Routines />}></Route>
+
+                <Route
+                    path="/routines"
+                    element={<Routines 
+                        routinesList={routinesList}
+                    />
+                    }
+                ></Route>
+
                 <Route path="/myroutines" element={<MyRoutines />}></Route>
 
                 <Route

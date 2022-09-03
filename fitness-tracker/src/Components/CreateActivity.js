@@ -20,7 +20,7 @@ const CreateActivity = ({token, activitiesList, setActivitiesList}) => {
         console.log("activitiesList in createNewActivity before state change-->", activitiesList)
         activitiesList.push(data)
         console.log("updated ActivitiesList-->", activitiesList)
-        setActivitiesList([activitiesList]);
+        setActivitiesList(activitiesList);
         alert("Your activity has been sucessfully added.");
     };
 

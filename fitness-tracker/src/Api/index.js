@@ -82,3 +82,20 @@ export async function createNewActivity({token, name, description}) {
     console.error(error)
   }
 }
+
+export async function fetchAllRoutines() {
+  try {
+    return fetch(`${BASE_URL}/routines`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+      return result;
+      });
+  }
+  catch (error) {
+    console.error(error);
+  }
+}
