@@ -49,7 +49,7 @@ const MyRoutines = ({token, routineId, setRoutineId}) => {
                     <h3>{routine.goal}</h3>
                     
                     <form onSubmit={handleUpdate}>
-                        <button type="submit" onClick={() => setRoutineId(routine.id)}>Update Routine</button> 
+                        <button type="submit" onClick={() => setRoutineId(routine.id)}>Update Activity</button> 
                     </form>
 
                     <form onSubmit={handleDelete}>
