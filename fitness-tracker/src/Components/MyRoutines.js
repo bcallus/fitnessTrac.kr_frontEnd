@@ -48,6 +48,11 @@ const MyRoutines = ({
         console.log("routineId-->", routineId)
         const data = await editActivity({ token, routineId, name, goal })
         console.log("data from handleEdit-->", data)
+        if (data.success) {
+            alert("You have sucessfully edited your routine.");
+          } else {
+            alert("There has been an error. Please try again.");
+        }
     }
 
     return (
