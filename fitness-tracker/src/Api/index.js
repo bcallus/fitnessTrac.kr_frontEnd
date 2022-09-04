@@ -189,3 +189,22 @@ export async function deleteRoutine({ token, routineId }) {
     console.error(error);
   }
 }
+
+export async function editActivity({routineId, name, goal}) {
+	try {
+		return fetch(`${BASE_URL}/routines/6`, {
+  method: "PATCH",
+  body: JSON.stringify({
+    name: name,
+    goal: goal
+  })
+	})
+	.then((response) => response.json())
+		.then((result) => {
+		 return result;
+			});
+        }
+	catch (error) {
+		console.error(error);
+	}
+}

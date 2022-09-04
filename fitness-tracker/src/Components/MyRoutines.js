@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import { deleteRoutine, getUserRoutines } from '../api';
+import { deleteRoutine, editActivity, getUserRoutines } from '../api';
 import CreateRoutine from './CreateRoutine';
 
 const MyRoutines = ({token, routineId, setRoutineId}) => {
@@ -35,8 +35,10 @@ const MyRoutines = ({token, routineId, setRoutineId}) => {
         }
     }
 
-    const handleUpdate = async(event) => {
+    const handleEdit = async(event) => {
         event.preventDefault();
+        console.log("routineId-->", routineId)
+        const data = await editActivity({routineId})
     }
 
     return (
@@ -44,12 +46,20 @@ const MyRoutines = ({token, routineId, setRoutineId}) => {
             <h1>My Routines Page Test</h1>
             <div >
                 {userRoutines.map((routine) =>
-                (<div key={routine.id} style={RoutineCardStyle}>
+                (<div className="my-routine" key={routine.id} style={RoutineCardStyle}>
+                    <div>
                     <h2>{routine.name}</h2>
                     <h3>{routine.goal}</h3>
+                    </div>
                     
-                    <form onSubmit={handleUpdate}>
-                        <button type="submit" onClick={() => setRoutineId(routine.id)}>Update Activity</button> 
+                    <form className="edit-routine" onSubmit={handleEdit}>
+                        <label>Name: </label>
+                        <input type="text" ></input>
+                        <br />
+                        <label>Goal: </label>
+                        <input type="text" ></input>
+                        <br />
+                        <button type="submit" onClick={() => setRoutineId(routine.id)}>Edit Routine</button> 
                     </form>
 
                     <form onSubmit={handleDelete}>
