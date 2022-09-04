@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createUserRoutines } from "../api";
 
 const CreateRoutine = ({ routines, setRoutines }) => {
+
 	const [token, setToken] = useState(localStorage.getItem("token"));
 	const [name, setName] = useState("");
 	const [goal, setGoal] = useState("");
@@ -29,7 +30,7 @@ const CreateRoutine = ({ routines, setRoutines }) => {
 				setGoal("");
 				setIsPublic(false);
 			}
-		}
+    }
 	};
 
     return(

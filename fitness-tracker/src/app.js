@@ -23,6 +23,7 @@ const App = () => {
     const [token, setToken] = useState();
     const [activitiesList, setActivitiesList] = useState();
     const [routinesList, setRoutinesList] = useState([{}]);
+    const [routineId, setRoutineId] = useState();
 
     useEffect(() => {
         fetchAllActivities().then((results) => {
@@ -68,7 +69,16 @@ const App = () => {
                     }
                 ></Route>
 
-                <Route path="/myroutines" element={<MyRoutines token={token} isLoggedIn={isLoggedIn}/>}></Route>
+                <Route
+                    path="/myroutines"
+                    element={
+                        <MyRoutines
+                            token={token} 
+                            routineId={routineId}
+                            setRoutineId={setRoutineId}
+                        />
+                    }
+                ></Route>
 
                 <Route
                     path="/activities"

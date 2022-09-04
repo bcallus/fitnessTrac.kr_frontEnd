@@ -170,3 +170,22 @@ export async function createNewActivity({ token, name, description }) {
 		console.error(error);
 	}
 }
+
+export async function deleteRoutine({ token, routineId }) {
+  try {
+    return fetch(`${BASE_URL}/routines/${routineId}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then((response) => response.json())
+		.then((result) => {
+		 return result;
+			});
+  }
+  catch (error) {
+    console.error(error);
+  }
+}
