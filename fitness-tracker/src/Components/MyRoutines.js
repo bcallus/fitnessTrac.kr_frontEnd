@@ -2,7 +2,15 @@ import React, {useState, useEffect } from 'react';
 import { deleteRoutine, editActivity, getUserRoutines } from '../api';
 import CreateRoutine from './CreateRoutine';
 
-const MyRoutines = ({token, routineId, setRoutineId}) => {
+const MyRoutines = ({
+    token,
+    routineId,
+    setRoutineId,
+    name,
+    setName,
+    goal,
+    setGoal
+}) => {
    
     const [userRoutines, setUserRoutines] = useState([]);
     const [username, setUsername] = useState(localStorage.getItem('username'));
@@ -38,12 +46,13 @@ const MyRoutines = ({token, routineId, setRoutineId}) => {
     const handleEdit = async(event) => {
         event.preventDefault();
         console.log("routineId-->", routineId)
-        const data = await editActivity({routineId})
+        const data = await editActivity({ token, routineId, name, goal })
+        console.log("data from handleEdit-->", data)
     }
 
     return (
         <div>
-            <h1>My Routines Page Test</h1>
+            <h1 className='title'>My Routines</h1>
             <div >
                 {userRoutines.map((routine) =>
                 (<div className="my-routine" key={routine.id} style={RoutineCardStyle}>
@@ -54,10 +63,10 @@ const MyRoutines = ({token, routineId, setRoutineId}) => {
                     
                     <form className="edit-routine" onSubmit={handleEdit}>
                         <label>Name: </label>
-                        <input type="text" ></input>
+                        <input type="text" onChange={(event) => setName(event.target.value)}></input>
                         <br />
                         <label>Goal: </label>
-                        <input type="text" ></input>
+                        <input type="text"  onChange={(event) => setGoal(event.target.value)}></input>
                         <br />
                         <button type="submit" onClick={() => setRoutineId(routine.id)}>Edit Routine</button> 
                     </form>

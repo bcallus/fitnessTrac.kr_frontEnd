@@ -190,13 +190,17 @@ export async function deleteRoutine({ token, routineId }) {
   }
 }
 
-export async function editActivity({routineId, name, goal}) {
+export async function editActivity({token, routineId, name, goal}) {
 	try {
-		return fetch(`${BASE_URL}/routines/6`, {
-  method: "PATCH",
-  body: JSON.stringify({
-    name: name,
-    goal: goal
+		return fetch(`${BASE_URL}/routines/${routineId}`, {
+			method: "PATCH",
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			  },
+ 		 body: JSON.stringify({
+   		 name: name,
+    	goal: goal
   })
 	})
 	.then((response) => response.json())
