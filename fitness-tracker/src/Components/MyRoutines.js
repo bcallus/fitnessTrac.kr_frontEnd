@@ -79,9 +79,9 @@ const MyRoutines = ({
                         <button type="submit" onClick={() => setRoutineId(routine.id)}>Edit Routine</button> 
                     </form>
 
-                    <fieldset>
-                        <label htmlFor="select-activity">
-                            Activity <span className="activity-count">({activitiesList.length})</span>
+                    <fieldset className="select-activity">
+                        <label htmlFor="select-activity" className="select-activity-label">
+                            Add Activity:
                         </label>
                         <select
                             name="activity"

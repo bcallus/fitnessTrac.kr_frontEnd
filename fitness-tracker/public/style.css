@@ -90,3 +90,14 @@ input {
 .my-routine {
     text-align: center;
 }
+
+.select-activity {
+    height: 50px;
+    border: solid black 1px;
+    padding-top: .75rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.select-activity-label {
+    margin-right: .5rem;
+}
