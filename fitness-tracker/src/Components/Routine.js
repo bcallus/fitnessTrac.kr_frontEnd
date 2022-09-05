@@ -1,7 +1,6 @@
 import React from "react";
 
 const Routine = ({routine}) => {
-    // console.log("routine.activities in Routine-->", routine.activities)
 
     return (
         <div className="routine">

@@ -3,7 +3,6 @@ import Activity from './Activity';
 import CreateActivity from './CreateActivity';
 
 const Activities = ({token, activitiesList, setActivitiesList, isLoggedIn}) => {
-    // console.log("activitiesList in Activities component-->", activitiesList)
    
     return (
         <div>

@@ -19,10 +19,7 @@ const Register = ({
           password,
         });
 
-          console.log("data from registerUser-->", data)
           const token = data.token;
-          
-          // console.log("token-->", token)
           
         localStorage.setItem("token", JSON.stringify(token));
         setToken(token);
@@ -32,7 +29,7 @@ const Register = ({
           ? alert(`${data.message}`)
           : alert(`${data.error}`);
         if (token) {
-          navigate("/routines"); //check on this
+          navigate("/routines"); 
         }
       }
     };

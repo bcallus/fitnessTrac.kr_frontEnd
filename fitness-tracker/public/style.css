@@ -92,7 +92,7 @@ input {
 }
 
 .select-activity {
-    height: 50px;
+    height: 80px;
     border: solid black 1px;
     padding-top: .75rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

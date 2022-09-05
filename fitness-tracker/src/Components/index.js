@@ -9,6 +9,3 @@ export { default as LogOut } from './LogOut';
 export { default as Activity } from './Activity';
 export { default as CreateActivity } from './CreateActivity';
 export { default as Routine } from './Routine';
-
-//still need to fix the following from grading rubric:
-// as a registered user: stay logged in between page visits (for example, if I close my browser, and come back later)

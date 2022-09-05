@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createUserRoutines } from "../api";
 
-const CreateRoutine = ({ routines, setRoutines }) => {
+const CreateRoutine = () => {
 
 	const [token, setToken] = useState(localStorage.getItem("token"));
 	const [name, setName] = useState("");
@@ -64,10 +64,8 @@ const CreateRoutine = ({ routines, setRoutines }) => {
           </label>
           <div>
             <button type="submit">Submit</button>
-            {/* <p>{message}</p> */}
           </div>
         </form>
-        {/* <MyRoutines token={token} username={username} /> */}
       </div>
     )
 }

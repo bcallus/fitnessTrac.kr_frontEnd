@@ -2,8 +2,7 @@ import React from 'react';
 import Routine from './Routine'
 
 const Routines = ({ routinesList }) => {
-    console.log("routinesList in Routines-->", routinesList)
-    // routinesList.map(routine => console.log("routine from routinesListmap-->", routine))
+    
     return (
         <div>
             <h1 className="routines-title">All Routines</h1>

@@ -11,8 +11,8 @@ const MyRoutines = ({
     goal,
     setGoal,
     activitiesList,
-    activity,
-    setActivity
+    activityId,
+    setActivityId,
 }) => {
    
     const [userRoutines, setUserRoutines] = useState([]);
@@ -26,19 +26,14 @@ const MyRoutines = ({
     }
 
     useEffect(() => {
-        // setUserRoutines(getUserRoutines({token, username}));
         getUserRoutines({token, username})
         .then(data => setUserRoutines(data))
         .catch(console.error);
-        // console.log(userRoutines);
     }, []);
 
     const handleDelete = async (event) => {
         event.preventDefault();
-        console.log("routineId-->", routineId)
         const data = await deleteRoutine({ token, routineId })
-        console.log("data from deleteRoutine-->", data)
-        console.log("userRoutines-->", userRoutines)
         if (data.success) {
             alert("You have sucessfully deleted your routine.");
           } else {
@@ -48,9 +43,7 @@ const MyRoutines = ({
 
     const handleEdit = async(event) => {
         event.preventDefault();
-        console.log("routineId-->", routineId)
         const data = await editActivity({ token, routineId, name, goal })
-        console.log("data from handleEdit-->", data)
         if (data.success) {
             alert("You have sucessfully edited your routine.");
           } else {
@@ -81,19 +74,21 @@ const MyRoutines = ({
 
                     <fieldset className="select-activity">
                         <label htmlFor="select-activity" className="select-activity-label">
-                            Add Activity:
+                            Select Activity:
                         </label>
                         <select
                             name="activity"
                             id="select-activity"
-                            value={activity}
-                            onChange={(event) => { setActivity(event.target.value) }} //fix this
+                            value={activityId}
+                            onChange={(event) => { setActivityId(event.target.value) }} 
                         >
                             <option value="any">Any</option>
                             {activitiesList.map(activity => <option key={activity.id}>{activity.name}</option>)}
                         </select>
+                        <br/>
+                        <button>Add Activity to Routine</button>
                     </fieldset>
-
+    
                     <form onSubmit={handleDelete}>
                     <button type="submit" onClick={() => setRoutineId(routine.id)}>Delete Routine</button> 
                     </form>

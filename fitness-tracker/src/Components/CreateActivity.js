@@ -6,8 +6,6 @@ const CreateActivity = ({token, activitiesList, setActivitiesList}) => {
     const [name, setName] = useState();
     const [description, setDescription] = useState();
 
-    // console.log("token in CreateActivity-->", token) 
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = await createNewActivity({
@@ -15,10 +13,7 @@ const CreateActivity = ({token, activitiesList, setActivitiesList}) => {
             name,
             description
         });
-        console.log("data from createNewActivity-->", data)
-        console.log("activitiesList in createNewActivity before state change-->", activitiesList)
         activitiesList.push(data)
-        console.log("updated ActivitiesList-->", activitiesList)
         setActivitiesList(activitiesList);
         alert("Your activity has been sucessfully added.");
     };
