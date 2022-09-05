@@ -11,9 +11,6 @@ const CreateRoutine = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(`Bearer ${token}`);
-    console.log("Routine Name: " + name);
-    console.log("reoutine goal: " + goal);
     setToken(localStorage.getItem("token"));
 		const result = await createUserRoutines({name, goal, isPublic});
 		if (

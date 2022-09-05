@@ -77,7 +77,6 @@ export async function getAllRoutines() {
 
 export async function getUserRoutines({ token, username }) {
 	try {
-		console.log(token);
 		const request = await fetch(`${BASE_URL}/users/${username}/routines`, {
 			headers: {
 				"Content-Type": "application/json",
@@ -85,7 +84,6 @@ export async function getUserRoutines({ token, username }) {
 			},
 		});
 		if (!request.ok) {
-			console.log(request);
 		}
 		const result = await request.json();
 		return result;
@@ -110,7 +108,6 @@ export async function createUserRoutines({ name, goal, isPublic }) {
 		})
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result);
 				return result;
 			})
 			.catch(console.error);

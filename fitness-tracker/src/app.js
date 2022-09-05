@@ -30,11 +30,9 @@ const App = () => {
 
     useEffect(() => {
         fetchAllActivities().then((results) => {
-            // console.log("results from fetchAllActivities-->", results)
             setActivitiesList(results);
         });
         getAllRoutines().then((results) => {
-            console.log("results from fetchAllRoutines-->", results)
             setRoutinesList(results);
         });
         onLoad();
