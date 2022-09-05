@@ -9,7 +9,10 @@ const MyRoutines = ({
     name,
     setName,
     goal,
-    setGoal
+    setGoal,
+    activitiesList,
+    activity,
+    setActivity
 }) => {
    
     const [userRoutines, setUserRoutines] = useState([]);
@@ -17,7 +20,7 @@ const MyRoutines = ({
     console.log(userRoutines);
 
     const RoutineCardStyle = {
-        border: "2px solid black",
+        border: "1px solid black",
         padding: "1em",
         margin: '1em'
     }
@@ -75,6 +78,21 @@ const MyRoutines = ({
                         <br />
                         <button type="submit" onClick={() => setRoutineId(routine.id)}>Edit Routine</button> 
                     </form>
+
+                    <fieldset>
+                        <label htmlFor="select-activity">
+                            Activity <span className="activity-count">({activitiesList.length})</span>
+                        </label>
+                        <select
+                            name="activity"
+                            id="select-activity"
+                            value={activity}
+                            onChange={(event) => { setActivity(event.target.value) }} //fix this
+                        >
+                            <option value="any">Any</option>
+                            {activitiesList.map(activity => <option key={activity.id}>{activity.name}</option>)}
+                        </select>
+                    </fieldset>
 
                     <form onSubmit={handleDelete}>
                     <button type="submit" onClick={() => setRoutineId(routine.id)}>Delete Routine</button> 

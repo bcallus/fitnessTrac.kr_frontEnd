@@ -26,6 +26,7 @@ const App = () => {
     const [routineId, setRoutineId] = useState();
     const [name, setName] = useState();
     const [goal, setGoal] = useState();
+    const [activity, setActivity] = useState();
 
     useEffect(() => {
         fetchAllActivities().then((results) => {
@@ -82,6 +83,9 @@ const App = () => {
                             setName={setName}
                             goal={goal}
                             setGoal={setGoal}
+                            activitiesList={activitiesList}
+                            activity={activity}
+                            setActivity={setActivity}
                         />
                     }
                 ></Route>
